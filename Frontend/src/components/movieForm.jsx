@@ -24,14 +24,16 @@ class MovieForm extends Form {
     dailyRentalRate: Joi.number().min(0).max(10).label("Dailey Rental Rate"),
   };
 
-  async componentDidMount() {
+  async populateGenres() {
     const { data: genres } = await getGenres();
     this.setState({ genres });
+  }
 
-    const movieId = this.props.match.params._id;
-    if (movieId === "new") return;
-
+  async populateMovie() {
     try {
+      const movieId = this.props.match.params._id;
+      if (movieId === "new") return;
+      console.log("u");
       const { data: movie } = await getMovie(movieId);
       this.setState({ data: this.modelView(movie) });
     } catch (ex) {
@@ -41,7 +43,14 @@ class MovieForm extends Form {
     }
   }
 
+  async componentDidMount() {
+    console.log("uu");
+    await this.populateGenres();
+    await this.populateMovie();
+  }
+
   modelView(movie) {
+    console.log(movie);
     return {
       _id: movie._id,
       title: movie.title,
@@ -51,10 +60,8 @@ class MovieForm extends Form {
     };
   }
 
-  doSubmit = () => {
-    const movie = this.state.data;
-    delete movie._id;
-    saveMovie(movie);
+  doSubmit = async () => {
+    await saveMovie(this.state.data);
 
     this.props.history.push("/movies");
   };
@@ -65,7 +72,6 @@ class MovieForm extends Form {
     return (
       <div>
         <h1>Movie Form</h1>
-
         <form onSubmit={this.handleSubmit}>
           {this.rederInput("title", "Title")}
           {this.renderCustomInput("genreId", "Genre", genres)}
