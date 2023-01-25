@@ -4,6 +4,7 @@ const express = require("express");
 const { Genres } = require("../models/genre");
 const router = express.Router();
 const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
 
 // Get all movies
 router.get("/", async (req, res) => {
@@ -13,12 +14,11 @@ router.get("/", async (req, res) => {
 
 // Get a movie by id
 router.get("/:id", async (req, res) => {
-  try {
-    const movie = await Movie.findById(req.params.id);
-    res.send(movie);
-  } catch (ex) {
-    for (let field in ex.errors) console.log(ex.errors[field].message);
-  }
+  const movie = await Movie.findById(req.params.id);
+  if (!movie)
+    return res.status(404).send("The movie with the given ID was not found.");
+
+  res.send(movie);
 });
 
 //Creat a movie
@@ -39,6 +39,7 @@ router.post("/", auth, async (req, res) => {
     numberInStock: req.body.numberInStock,
     dailyRentalRate: req.body.dailyRentalRate,
   });
+  console.log(movie);
   try {
     await movie.save();
     res.send(movie);
@@ -49,12 +50,12 @@ router.post("/", auth, async (req, res) => {
 
 // Delete a movie
 router.delete("/:id", async (req, res) => {
-  try {
-    const movie = await Movie.findByIdAndRemove(req.params.id);
-    res.send(movie);
-  } catch (ex) {
-    for (let field in ex.errors) console.log(ex.errors[field].message);
-  }
+  const movie = await Movie.findByIdAndRemove(req.params.id);
+
+  if (!movie)
+    return res.status(404).send("The movie with the given ID was not found.");
+
+  res.send(movie);
 });
 
 // Update a movie by id

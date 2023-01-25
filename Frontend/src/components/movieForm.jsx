@@ -1,8 +1,8 @@
 import React from "react";
 import Form from "./common/form";
 import Joi from "joi-browser";
-import { getGenres } from "../services/fakeGenreService";
-import { getMovie, saveMovie } from "../services/fakeMovieService";
+import { getGenres } from "../services/genreService";
+import { getMovie, saveMovie } from "../services/movieService";
 
 class MovieForm extends Form {
   state = {
@@ -24,17 +24,21 @@ class MovieForm extends Form {
     dailyRentalRate: Joi.number().min(0).max(10).label("Dailey Rental Rate"),
   };
 
-  componentDidMount() {
-    const genres = [...getGenres()];
+  async componentDidMount() {
+    const { data: genres } = await getGenres();
     this.setState({ genres });
 
     const movieId = this.props.match.params._id;
     if (movieId === "new") return;
 
-    const movie = getMovie(movieId);
-    if (!movie) return this.props.history.replace("/notFound");
-
-    this.setState({ data: this.modelView(movie) });
+    try {
+      const { data: movie } = await getMovie(movieId);
+      this.setState({ data: this.modelView(movie) });
+    } catch (ex) {
+      console.log(ex.response.status);
+      if (ex.response && ex.response.status === 404)
+        return this.props.history.replace("/notFound");
+    }
   }
 
   modelView(movie) {
@@ -48,8 +52,10 @@ class MovieForm extends Form {
   }
 
   doSubmit = () => {
-    saveMovie(this.state.data);
-    
+    const movie = this.state.data;
+    delete movie._id;
+    saveMovie(movie);
+
     this.props.history.push("/movies");
   };
 
