@@ -22,7 +22,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //Creat a movie
-router.post("/", auth, async (req, res) => {
+router.post("/", [auth], async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -49,7 +49,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 // Delete a movie
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",[auth,admin], async (req, res) => {
   const movie = await Movie.findByIdAndRemove(req.params.id);
 
   if (!movie)
@@ -59,7 +59,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 // Update a movie by id
-router.put("/:id", async (req, res) => {
+router.put("/:id", [auth],async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 

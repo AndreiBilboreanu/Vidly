@@ -37,14 +37,12 @@ class MovieForm extends Form {
       const { data: movie } = await getMovie(movieId);
       this.setState({ data: this.modelView(movie) });
     } catch (ex) {
-      console.log(ex.response.status);
-      if (ex.response && ex.response.status === 404)
+      if (ex.response && ex.response.status === 400)
         return this.props.history.replace("/notFound");
     }
   }
 
   async componentDidMount() {
-    console.log("uu");
     await this.populateGenres();
     await this.populateMovie();
   }
