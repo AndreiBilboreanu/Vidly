@@ -29,6 +29,10 @@ const Movie = mongoose.model(
       max: 255,
       default: 0,
     },
+    image: {
+      type: String,
+      required: true,
+    },
   })
 );
 
@@ -38,6 +42,7 @@ function validateMovie(movie) {
     genreId: Joi.objectId().required(),
     numberInStock: Joi.number().min(0).max(255),
     dailyRentalRate: Joi.number().min(0).max(255),
+    image: Joi.required(),
   });
   return schema.validate(movie);
 }

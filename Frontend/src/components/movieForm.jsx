@@ -3,6 +3,7 @@ import Form from "./common/form";
 import Joi from "joi-browser";
 import { getGenres } from "../services/genreService";
 import { getMovie, saveMovie } from "../services/movieService";
+import FileBase64 from "react-file-base64";
 
 class MovieForm extends Form {
   state = {
@@ -11,6 +12,7 @@ class MovieForm extends Form {
       genreId: "",
       numberInStock: 0,
       dailyRentalRate: 0,
+      image: null,
     },
     genres: [],
     errors: {},
@@ -22,6 +24,7 @@ class MovieForm extends Form {
     genreId: Joi.string().label("Genre"),
     numberInStock: Joi.number().min(0).max(100).label("Number in stock"),
     dailyRentalRate: Joi.number().min(0).max(10).label("Dailey Rental Rate"),
+    image: Joi.any().label("Image"),
   };
 
   async populateGenres() {
@@ -48,7 +51,6 @@ class MovieForm extends Form {
   }
 
   modelView(movie) {
-    console.log(movie);
     return {
       _id: movie._id,
       title: movie.title,
@@ -59,6 +61,7 @@ class MovieForm extends Form {
   }
 
   doSubmit = async () => {
+    console.log(this.state.data);
     await saveMovie(this.state.data);
 
     this.props.history.push("/movies");
@@ -75,6 +78,16 @@ class MovieForm extends Form {
           {this.renderCustomInput("genreId", "Genre", genres)}
           {this.rederInput("numberInStock", "Number In Stock", "number")}
           {this.rederInput("dailyRentalRate", "Daily Rental Rate", "number")}
+          {/* {this.renderInputImage("image", "Image", "file")} */}
+          <FileBase64
+            multiple={false}
+            onDone={({ base64 }) => {
+              const data = this.state.data;
+              data.image = base64;
+              this.setState({ data });
+              console.log(base64);
+            }}
+          />
           {this.renderButton("Save")}
         </form>
       </div>
