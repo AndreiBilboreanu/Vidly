@@ -1,8 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Form from "./common/form";
 import Joi from "joi-browser";
+import SocialMedia from "./socialMedia";
 import * as userService from "../services/userService";
-import auth from "../services/authService"
+import auth from "../services/authService";
+import "../css/logingRegister.css";
+import "../css/register.css";
 class RegisterForm extends Form {
   state = {
     data: {
@@ -22,7 +26,7 @@ class RegisterForm extends Form {
   doSubmit = async () => {
     try {
       const response = await userService.register(this.state.data);
-      auth.loginWithJwt(response.header["x-auth-token"])
+      auth.loginWithJwt(response.header["x-auth-token"]);
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -36,14 +40,24 @@ class RegisterForm extends Form {
 
   render() {
     return (
-      <div>
-        <h1>Register</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.rederInput("username", "Username")}
-          {this.rederInput("password", "Password", "password")}
-          {this.rederInput("name", "Name")}
-          {this.renderButton("Register")}
-        </form>
+      <div className="pageContainer">
+        <div className="loginContainer">
+          <div className="notRegister">
+            <span>Already a member? </span>
+            <Link to="/login">Login!</Link>
+          </div>
+          <div className="formContainer">
+            <h1>Welcome!</h1>
+            <h3>Your journey starts here</h3>
+            <form onSubmit={this.handleSubmit}>
+              {this.rederInput("username", "Username")}
+              {this.rederInput("password", "Password", "password")}
+              {this.rederInput("name", "Name")}
+              {this.renderButton("Create account")}
+            </form>
+            <SocialMedia />
+          </div>
+        </div>
       </div>
     );
   }

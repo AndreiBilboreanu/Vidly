@@ -1,0 +1,15 @@
+.formContainer {
+  top: 36% !important;
+}
+
+.alreadyRegister {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.1rem;
+    color: rgb(1, 30, 74);
+}
+
+.loginContainer {
+  height: 36vw !important;
+}

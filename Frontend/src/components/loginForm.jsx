@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Joi from "joi-browser";
 import SocialMedia from "./socialMedia";
 import Form from "./common/form";
@@ -42,7 +43,8 @@ class LoginForm extends Form {
       <div className="pageContainer">
         <div className="loginContainer">
           <div className="notRegister">
-            <a>Not a member? Signup!</a>
+            <span>Not a member? </span>
+            <Link to="/register">Signup!</Link>
           </div>
           <div className="formContainer">
             <h1>Welcome!</h1>

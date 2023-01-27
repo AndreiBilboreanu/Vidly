@@ -24,7 +24,11 @@ class App extends Component {
   }
 
   renderNavbar() {
-    if (window.location.pathname === "/login") return null;
+    if (
+      window.location.pathname === "/login" ||
+      window.location.pathname === "/register"
+    )
+      return null;
     return <NavBar user={this.state.user} />;
   }
 

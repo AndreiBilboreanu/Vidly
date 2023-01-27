@@ -98,3 +98,51 @@
 {"kind":"ObjectId","level":"error","message":"Cast to ObjectId failed for value \"cutomers\" (type string) at path \"_id\" for model \"Movies\" Cast to ObjectId failed for value \"cutomers\" (type string) at path \"_id\" for model \"Movies\"","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"cutomers\" (type string) at path \"_id\" for model \"Movies\"\n    at model.Query.exec (C:\\Personal\\Vidly-backend\\Backend\\node_modules\\mongoose\\lib\\query.js:4913:21)\n    at model.Query.Query.then (C:\\Personal\\Vidly-backend\\Backend\\node_modules\\mongoose\\lib\\query.js:5012:15)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)","stringValue":"\"cutomers\"","value":"cutomers","valueType":"string"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}
+{"level":"info","message":"Listening on port 3001..."}
+{"level":"info","message":"Connected to mongodb://localhost/Vidly..."}

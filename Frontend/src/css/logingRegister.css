@@ -80,3 +80,11 @@ h3 {
   height: 20vw;
   border-radius: 25px;
 }
+.socialRow {
+  margin-top: 45px;
+}
+
+.socialMediaIcons {
+  color: rgb(1, 30, 74);
+  font-size: 1.6rem;
+}
