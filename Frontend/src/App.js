@@ -23,13 +23,18 @@ class App extends Component {
     this.setState({ user });
   }
 
+  renderNavbar() {
+    if (window.location.pathname === "/login") return null;
+    return <NavBar user={this.state.user} />;
+  }
+
   render() {
     const { user } = this.state;
     return (
       <>
         <ToastContainer />
-        <NavBar user={user} />
-        <main className="container">
+        {this.renderNavbar()}
+        <main>
           <div className="content">
             <Switch>
               <Route path="/register" component={RegisterForm} />

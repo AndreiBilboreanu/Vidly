@@ -1,9 +1,11 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import Joi from "joi-browser";
+import SocialMedia from "./socialMedia";
 import Form from "./common/form";
 import auth from "../services/authService";
-
+import "../css/loging.css";
+import "../css/logingRegister.css";
 class LoginForm extends Form {
   state = {
     data: {
@@ -35,16 +37,27 @@ class LoginForm extends Form {
   };
 
   render() {
-
     if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
-      <div>
-        <h1>Login</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.rederInput("username", "Username")}
-          {this.rederInput("password", "Password", "password")}
-          {this.renderButton("Login")}
-        </form>
+      <div className="pageContainer">
+        <div className="loginContainer">
+          <div className="notRegister">
+            <a>Not a member? Signup!</a>
+          </div>
+          <div className="formContainer">
+            <h1>Welcome!</h1>
+            <h3>Login in to your account</h3>
+            <form onSubmit={this.handleSubmit}>
+              {this.rederInput("username", "Username")}
+              {this.rederInput("password", "Password", "password")}
+              <div className="forgetPassword">
+                <a>Forget password?</a>
+              </div>
+              {this.renderButton("Login")}
+            </form>
+            <SocialMedia />
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,53 +1,23 @@
-.loginContainer {
-  position: relative;
-  height: 50vw;
-  width: 25px;
-  background-color: rgb(101, 56, 68);
-}
-.formContainer {
+.forgetPassword {
+  color: rgb(1, 30, 74);
   position: absolute;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20vw;
-  height: 20vw;
-  border-radius: 25px;
+  right: 0px;
+  /* margin-left: 15rem; */
 }
 
-h1 {
-  text-align: center;
-}
-h3 {
-  font-size: 1.3em !important;
-  text-align: center;
-  padding-bottom: 1rem;
-}
-
-.imageContainer {
-  background-position: center;
-  /* background-attachment: fixed; */
-  /* background-size: 54vw 40vw; */
-  background-repeat: no-repeat;
-  background-image: url(../images/loginsignup.jpg);
-  width: 100vw;
-  height: 50vw;
+.notRegister {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.1rem;
+  color: rgb(1, 30, 74);
 }
 
-/* .loginContainer {
-  top: 15%;
-  width: 20vw;
-  height: 20vw;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 25px;
+.socialRow {
+  margin-top: 45px;
 }
 
-.loginComponent {
- 
-
-  background-image: url(../images/login-singup.png);
-
-
-  width: 100%;
-  height: 100%;
-} */
+.socialMediaIcons {
+  color: rgb(1, 30, 74);
+  font-size: 1.6rem;
+}
