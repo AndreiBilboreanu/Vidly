@@ -4,11 +4,12 @@ import { toast } from "react-toastify";
 import MoviesTable from "./moviesTable";
 import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
+import SearchBox from "./searchBox";
 import { getMovies, deleteMovie } from "../services/movieService";
 import { getGenres } from "../services/genreService";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
-import SearchBox from "./searchBox";
+import MoviesDisplay from "./moviesDisplay";
 
 class Movies extends Component {
   state = {
@@ -60,13 +61,13 @@ class Movies extends Component {
     this.setState({ selectedGenre: genre, searchQuery: "", currentPage: 1 });
   };
 
+  handleSort = (sortColumn) => {
+    this.setState({ sortColumn });
+  };
   handleSearch = (query) => {
     this.setState({ searchQuery: query, selectedGenre: null, currentPage: 1 });
   };
 
-  handleSort = (sortColumn) => {
-    this.setState({ sortColumn });
-  };
 
   getPagedData = () => {
     const {
@@ -98,10 +99,10 @@ class Movies extends Component {
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
 
+
     if (count === 0) return <p>There are no movies in the database.</p>;
 
     const { totalCount, data: movies } = this.getPagedData();
-
     return (
       <div className="row">
         <div className="col-3">
@@ -123,13 +124,14 @@ class Movies extends Component {
           )}
           <p>Showing {totalCount} movies in the database.</p>
           <SearchBox value={searchQuery} onChange={this.handleSearch} />
-          <MoviesTable
+          <MoviesDisplay movies={movies} />
+          {/* <MoviesTable
             movies={movies}
             sortColumn={sortColumn}
             onLike={this.handleLike}
             onDelete={this.handleDelete}
             onSort={this.handleSort}
-          />
+          /> */}
           <Pagination
             itemsCount={totalCount}
             pageSize={pageSize}

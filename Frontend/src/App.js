@@ -12,13 +12,14 @@ import RegisterForm from "./components/registerForm";
 import Logout from "./components/logout";
 import ProtectedRoute from "./components/common/protectedRoute";
 import auth from "./services/authService";
+import { getMovies, deleteMovie } from "./services/movieService";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 class App extends Component {
   state = {};
 
-  componentDidMount() {
+  async componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   render() {
-    const { user } = this.state;
+    const { user, movies } = this.state;
     return (
       <>
         <ToastContainer />
@@ -47,7 +48,9 @@ class App extends Component {
               <ProtectedRoute path="/movies/:_id" component={MovieForm} />
               <Route
                 path="/movies"
-                render={(props) => <Movies {...props} user={user} />}
+                render={(props) => (
+                  <Movies {...props} user={user}/>
+                )}
               />
               <Route path="/customers" component={Customers} />
               <Route path="/rentals" component={Rentals} />
