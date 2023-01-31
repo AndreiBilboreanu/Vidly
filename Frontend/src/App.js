@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import NavBar from "./components/navbar";
-import Movies from "./components/movies";
-import MovieForm from "./components/movieForm";
+import Movies from "./components/movie/movies";
+import MovieForm from "./components/movie/movieForm";
 import NotFound from "./components/notFound";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
@@ -12,7 +12,6 @@ import RegisterForm from "./components/registerForm";
 import Logout from "./components/logout";
 import ProtectedRoute from "./components/common/protectedRoute";
 import auth from "./services/authService";
-import { getMovies, deleteMovie } from "./services/movieService";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 

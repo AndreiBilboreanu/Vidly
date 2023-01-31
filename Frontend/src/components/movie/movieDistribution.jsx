@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import CardSlider from "./cardSlider";
-import { getDistributionByIds } from "../services/distributionService";
-import "../css/distributionCards.css";
-import { Slide } from "react-toastify";
+import CardSlider from "../cardSlider";
+import { getDistributionByIds } from "../../services/distributionService";
+import "../../css/distributionCards.css";
 
 class MovieDistribution extends Component {
   state = {
@@ -40,7 +39,7 @@ class MovieDistribution extends Component {
               <div className="carousel-item" key={slide}>
                 {console.log(distribution.slice(slide * 2 - 1, 3), "up")}
                 <CardSlider
-                  cards={distribution.slice(slide * 3 , slide * 3 + 3)}
+                  cards={distribution.slice(slide * 3, slide * 3 + 3)}
                 />
               </div>
             );

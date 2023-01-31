@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import MoviesTable from "./moviesTable";
-import ListGroup from "./common/listGroup";
-import Pagination from "./common/pagination";
-import SearchBox from "./searchBox";
-import { getMovies, deleteMovie } from "../services/movieService";
-import { getGenres } from "../services/genreService";
-import { paginate } from "../utils/paginate";
+import ListGroup from "../common/listGroup";
+import Pagination from "../common/pagination";
+import SearchBox from "../searchBox";
+import { getMovies, deleteMovie } from "../../services/movieService";
+import { getGenres } from "../../services/genreService";
+import { paginate } from "../../utils/paginate";
 import _ from "lodash";
 import MoviesDisplay from "./moviesDisplay";
 

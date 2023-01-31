@@ -1,8 +1,8 @@
 import React from "react";
-import Form from "./common/form";
+import Form from "../common/form";
 import Joi from "joi-browser";
-import { getGenres } from "../services/genreService";
-import { getMovie, saveMovie } from "../services/movieService";
+import { getGenres } from "../../services/genreService";
+import { getMovie, saveMovie } from "../../services/movieService";
 import FileBase64 from "react-file-base64";
 
 class MovieForm extends Form {

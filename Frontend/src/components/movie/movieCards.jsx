@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../css/movieCards.css";
+import "../../css/movieCards.css";
 import MovieCardInfoNavbar from "./movieCardInfoNavbar";
 
 class MovieCards extends Component {
