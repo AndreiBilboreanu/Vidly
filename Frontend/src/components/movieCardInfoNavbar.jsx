@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MovieReview from "./movieReview";
+import MovieDistribution from "./movieDistribution";
 
 class MovieCardInfoNavbar extends Component {
   state = {};
@@ -7,14 +8,9 @@ class MovieCardInfoNavbar extends Component {
     const { movie } = this.props;
     // console.log(movie);
     return (
-      <div
-        id={"l" + movie._id.slice(-2)}
-        data-target={movie._id.slice(-3)}
-        className="d-flex align-items-start navContent"
-      >
+      <div id={movie._id} className="d-flex align-items-start navContent">
         <ul
           className="nav nav-tabs flex-column buttonNav"
-          id={movie._id.slice(-3)}
           role="tablist"
           aria-label="Vertical button  group"
         >
@@ -23,7 +19,7 @@ class MovieCardInfoNavbar extends Component {
               className="active buttonCard"
               id="review-tab"
               data-bs-toggle="tab"
-              data-bs-target="#review"
+              data-bs-target={`#${movie._id.slice(-2)}`}
               type="button"
               role="tab"
               aria-controls="review"
@@ -37,7 +33,7 @@ class MovieCardInfoNavbar extends Component {
               className="buttonCard"
               id="profile-tab"
               data-bs-toggle="tab"
-              data-bs-target="#profile"
+              data-bs-target={`#${movie._id.slice(-3)}`}
               type="button"
               role="tab"
               aria-controls="profile"
@@ -51,7 +47,7 @@ class MovieCardInfoNavbar extends Component {
               className=" buttonCard"
               id="messages-tab"
               data-bs-toggle="tab"
-              data-bs-target="#messages"
+              data-bs-target={`#${movie._id.slice(-4)}`}
               type="button"
               role="tab"
               aria-controls="messages"
@@ -62,41 +58,30 @@ class MovieCardInfoNavbar extends Component {
           </li>
         </ul>
 
-        <div
-          className="tab-content contentMain .{{movie._id.slice(-3)}}"
-          id={movie._id.slice(-3)}
-        >
+        <div className="tab-content contentMain">
           <div
             className="tab-pane active content"
-            id="review"
+            id={movie._id.slice(-2)}
             role="tabpanel"
             aria-labelledby="review-tab"
           >
-            <MovieReview movie={movie} />
+            <MovieReview key={movie._id} movie={movie} />
           </div>
           <div
             className="tab-pane contentMain"
-            id="profile"
+            id={movie._id.slice(-3)}
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            <p>{movie.title}</p>
+            <MovieDistribution movieDistribution={movie.distribution} />
           </div>
           <div
             className="tab-pane contentMain"
-            id="messages"
+            id={movie._id.slice(-4)}
             role="tabpanel"
             aria-labelledby="messages-tab"
           >
-            <MovieReview />
-          </div>
-          <div
-            className="tab-pane contentPanel"
-            id="settings"
-            role="tabpanel"
-            aria-labelledby="settings-tab"
-          >
-            .vvvv..
+            Discription
           </div>
         </div>
       </div>

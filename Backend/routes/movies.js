@@ -1,32 +1,11 @@
 const { Movie, validate } = require("../models/movie");
+const { Distribution } = require("../models/distribution");
+const { Genres } = require("../models/genre");
 const mongoose = require("mongoose");
 const express = require("express");
-const { Genres } = require("../models/genre");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
-const multer = require("multer");
-const { v4: uuidv4 } = require("uuid");
-//multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "images");
-  },
-  filename: function (req, file, cb) {
-    cb(null, uuidv4() + "-" + Date.now() + path.extname(file.originalname));
-  },
-});
-
-const fileFilter = (req, file, cb) => {
-  const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png"];
-  if (allowedFileTypes.includes(file.mimetype)) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
-
-let upload = multer({ storage, fileFilter });
 
 // Get all movies
 router.get("/", async (req, res) => {
@@ -36,15 +15,16 @@ router.get("/", async (req, res) => {
 
 // Get a movie by id
 router.get("/:id", async (req, res) => {
+  console.log(req.body);
   const movie = await Movie.findById(req.params.id);
   if (!movie)
     return res.status(404).send("The movie with the given ID was not found.");
 
   res.send(movie);
 });
-// , upload.single("image")
+
 //Creat a movie
-router.post("/", [auth], async (req, res) => {
+router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -52,7 +32,12 @@ router.post("/", [auth], async (req, res) => {
   const genre = await Genres.findById(req.body.genreId);
   if (!genre) return res.status(400).send("Invalid genres.");
 
-  console.log(req.body.image);
+  //Verify if the distribution id exists
+  for (let distribution of req.body.distribution) {
+    const d = await Distribution.findById(distribution);
+    if (!d) return res.status(400).send("Invalid distribution.");
+  }
+  console.log(req.body.distribution);
   const movie = new Movie({
     title: req.body.title,
     genre: {
@@ -62,13 +47,16 @@ router.post("/", [auth], async (req, res) => {
     numberInStock: req.body.numberInStock,
     dailyRentalRate: req.body.dailyRentalRate,
     image: req.body.image,
+    distribution: req.body.distribution,
   });
-  console.log(movie);
+
   try {
     await movie.save();
     res.send(movie);
   } catch (ex) {
-    for (let field in ex.errors) console.log(ex.errors[field].message);
+    console.log("mama");
+    for (let field in ex.errors)
+      return res.status(400).send(ex.errors[field].message);
   }
 });
 
@@ -83,12 +71,17 @@ router.delete("/:id", [auth, admin], async (req, res) => {
 });
 
 // Update a movie by id
-router.put("/:id", [auth], async (req, res) => {
+router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const genre = await Genres.findById(req.body.genreId);
   if (!genre) return res.status(400).send("Invalid genre.");
+
+  for (let distribution of req.body.distribution) {
+    const d = await Distribution.findById(distribution);
+    if (!d) return res.status(400).send("Invalid distribution.");
+  }
 
   try {
     const movie = await Movie.findByIdAndUpdate(
@@ -101,6 +94,8 @@ router.put("/:id", [auth], async (req, res) => {
         },
         numberInStock: req.body.numberInStock,
         dailyRentalRate: req.body.dailyRentalRate,
+        image: req.body.image,
+        distribution: req.body.distribution,
       },
       { new: true }
     );
