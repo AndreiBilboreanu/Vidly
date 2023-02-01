@@ -35,7 +35,6 @@
 
 .carousel-control-prev,
 .carousel-control-next {
-  z-index: 1;
   background-color: #e1e1e1 !important;
   margin-top: 23% !important;
   width: 4.3vh !important;

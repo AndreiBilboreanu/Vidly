@@ -14,7 +14,6 @@ class MovieDistribution extends Component {
         movieDistribution
       );
       this.setState({ distribution });
-      console.log(distribution);
     }
   }
   render() {

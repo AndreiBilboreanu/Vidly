@@ -33,6 +33,18 @@ const Movie = mongoose.model(
       type: String,
       required: true,
     },
+    rate: {
+      type: Number,
+      min: 1,
+      max: 10,
+      required: true,
+    },
+    description: {
+      type: String,
+      min: 100,
+      max: 5000,
+      required: true,
+    },
     distribution: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -49,6 +61,8 @@ function validateMovie(movie) {
     numberInStock: Joi.number().min(0).max(255),
     dailyRentalRate: Joi.number().min(0).max(255),
     image: Joi.required(),
+    rate: Joi.number().min(1).max(10).required(),
+    description: Joi.string().min(100).max(5000).required(),
     distribution: Joi.array().items(Joi.objectId()).required(),
   });
   return schema.validate(movie);

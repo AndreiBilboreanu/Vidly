@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
     const d = await Distribution.findById(distribution);
     if (!d) return res.status(400).send("Invalid distribution.");
   }
-  console.log(req.body.distribution);
+
   const movie = new Movie({
     title: req.body.title,
     genre: {
@@ -47,6 +47,8 @@ router.post("/", async (req, res) => {
     numberInStock: req.body.numberInStock,
     dailyRentalRate: req.body.dailyRentalRate,
     image: req.body.image,
+    rate: req.body.rate,
+    description: req.body.description,
     distribution: req.body.distribution,
   });
 
@@ -54,7 +56,6 @@ router.post("/", async (req, res) => {
     await movie.save();
     res.send(movie);
   } catch (ex) {
-    console.log("mama");
     for (let field in ex.errors)
       return res.status(400).send(ex.errors[field].message);
   }
@@ -95,6 +96,8 @@ router.put("/:id", async (req, res) => {
         numberInStock: req.body.numberInStock,
         dailyRentalRate: req.body.dailyRentalRate,
         image: req.body.image,
+        rate: req.body.rate,
+        description: req.body.description,
         distribution: req.body.distribution,
       },
       { new: true }

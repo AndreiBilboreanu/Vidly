@@ -66,7 +66,7 @@ class MovieCardInfoNavbar extends Component {
             role="tabpanel"
             aria-labelledby="messages-tab"
           >
-            <MovieDescription />
+            <MovieDescription movieDescription={movie}/>
           </div>
           <div
             className="tab-pane contentMain"
@@ -74,7 +74,7 @@ class MovieCardInfoNavbar extends Component {
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            <MovieDistribution movieDistribution={movie.distribution} />
+            <MovieDistribution key={movie._id} movieDistribution={movie.distribution} />
           </div>
           <div
             className="tab-pane content"
