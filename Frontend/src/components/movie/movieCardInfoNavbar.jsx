@@ -7,9 +7,11 @@ class MovieCardInfoNavbar extends Component {
   state = {};
   render() {
     const { movie } = this.props;
-    // console.log(movie);
     return (
-      <div id={movie._id} className="d-flex align-items-start navContent">
+      <div
+        id={`movie-navbar-${movie._id}`}
+        className="d-flex align-items-start navContent"
+      >
         <ul
           className="nav nav-tabs flex-column buttonNav"
           role="tablist"
@@ -18,12 +20,12 @@ class MovieCardInfoNavbar extends Component {
           <li className="nav-item liContent" role="presentation">
             <button
               className=" buttonCard"
-              id="messages-tab"
+              id="description-tab"
               data-bs-toggle="tab"
-              data-bs-target={`#${movie._id.slice(-4)}`}
+              data-bs-target={`#movie-navbar-description-button${movie._id}`}
               type="button"
               role="tab"
-              aria-controls="messages"
+              aria-controls="description"
               aria-selected="false"
             >
               Description
@@ -32,12 +34,12 @@ class MovieCardInfoNavbar extends Component {
           <li className="nav-item liContent" role="presentation">
             <button
               className="buttonCard"
-              id="profile-tab"
+              id="casting-tab"
               data-bs-toggle="tab"
-              data-bs-target={`#${movie._id.slice(-5)}`}
+              data-bs-target={`#movie-navbar-casting-button${movie._id}`}
               type="button"
               role="tab"
-              aria-controls="profile"
+              aria-controls="casting"
               aria-selected="false"
             >
               Casting
@@ -48,7 +50,7 @@ class MovieCardInfoNavbar extends Component {
               className="active buttonCard"
               id="review-tab"
               data-bs-toggle="tab"
-              data-bs-target={`#${movie._id.slice(-2)}`}
+              data-bs-target={`#movie-navbar-review-button${movie._id}`}
               type="button"
               role="tab"
               aria-controls="review"
@@ -62,17 +64,17 @@ class MovieCardInfoNavbar extends Component {
         <div className="tab-content contentMain">
           <div
             className="tab-pane active contentMain"
-            id={movie._id.slice(-4)}
+            id={`movie-navbar-description-button${movie._id}`}
             role="tabpanel"
-            aria-labelledby="messages-tab"
+            aria-labelledby="description-tab"
           >
             <MovieDescription movieDescription={movie} />
           </div>
           <div
             className="tab-pane contentMain"
-            id={movie._id.slice(-5)}
+            id={`movie-navbar-casting-button${movie._id}`}
             role="tabpanel"
-            aria-labelledby="profile-tab"
+            aria-labelledby="casting-tab"
           >
             <MovieDistribution
               key={movie._id}
@@ -82,13 +84,11 @@ class MovieCardInfoNavbar extends Component {
           </div>
           <div
             className="tab-pane contentMain"
-            id={movie._id.slice(-2)}
+            id={`movie-navbar-review-button${movie._id}`}
             role="tabpanel"
             aria-labelledby="review-tab"
           >
-            {movie.title === "Airplane" && (
-              <MovieReview key={movie._id} movie={movie} />
-            )}
+            <MovieReview key={movie._id} movie={movie} />
           </div>
         </div>
       </div>

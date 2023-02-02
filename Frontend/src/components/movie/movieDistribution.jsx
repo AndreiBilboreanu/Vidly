@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Helmet } from "react-helmet";
 import CardSlider from "../cardSlider";
 import { getDistributionByIds } from "../../services/distributionService";
 import "../../css/distributionCards.css";
@@ -8,6 +7,7 @@ class MovieDistribution extends Component {
   state = {
     distribution: [],
   };
+
   async componentDidMount() {
     const { movieDistribution } = this.props;
     if (movieDistribution.length !== 0) {
@@ -17,6 +17,7 @@ class MovieDistribution extends Component {
       this.setState({ distribution });
     }
   }
+
   render() {
     const { distribution } = this.state;
     const { movieId } = this.props;
@@ -28,7 +29,7 @@ class MovieDistribution extends Component {
     return (
       <div>
         <div
-          id={`carousel-${movieId}`}
+          id={`carousel-distribution-${movieId}`}
           className="carousel carousel-dark slide"
           data-ride="carousel"
         >
@@ -49,32 +50,28 @@ class MovieDistribution extends Component {
           <button
             className="carousel-control-prev"
             type="button"
-            data-bs-target={`#carousel-${movieId}`}
+            data-bs-target={`#carousel-distribution-${movieId}`}
             data-bs-slide="prev"
           >
             <span
-              id={`carousel-${movieId}`}
+              id={`carousel-distribution-span-1-${movieId}`}
               className="carousel-control-prev-icon"
               aria-hidden="true"
             ></span>
-            <span id={movieId} className="visually-hidden">
-              Previous
-            </span>
+            <span className="visually-hidden">Previous</span>
           </button>
           <button
             className="carousel-control-next"
             type="button"
-            data-bs-target={`#carousel-${movieId}`}
+            data-bs-target={`#carousel-distribution-${movieId}`}
             data-bs-slide="next"
           >
             <span
-              id={movieId}
+              id={`carousel-distribution-span-2-${movieId}`}
               className="carousel-control-next-icon"
               aria-hidden="true"
             ></span>
-            <span id={movieId} className="visually-hidden">
-              Next
-            </span>
+            <span className="visually-hidden">Next</span>
           </button>
         </div>
       </div>

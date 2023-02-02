@@ -8,8 +8,9 @@ const StarRataing = ({ onRatingChange, ratingKey }) => {
   const [rating, setRating] = useState(null);
   const [hovered, setHovered] = useState(null);
   library.add(faStar);
+
   return (
-    <div id={ratingKey.slice(-6)}>
+    <div id={`star-rating-${ratingKey}`}>
       {[...Array(10)].map((star, i) => {
         const ratingValue = i + 1;
         return (

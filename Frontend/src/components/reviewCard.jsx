@@ -3,10 +3,7 @@ import { getUserName } from "../services/userService";
 import "../css/distributionCards.css";
 import userPhoto from "../images/userPhoto.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faThumbsUp,
-  faThumbsDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 class ReviewCard extends Component {
@@ -19,18 +16,14 @@ class ReviewCard extends Component {
   async componentDidMount() {
     const { review } = this.props;
     const { data: userName } = await getUserName(review.userId);
-    const reviewNumber = Math.floor(Math.random() * 10);
+    const reviewNumber = Math.floor(Math.random() * 5) + 3;
     this.setState({ userName, reviewNumber });
   }
 
-  async componentDidUpdate() {
-    const { review } = this.props;
-    const { data: userName } = await getUserName(review.userId);
-    this.setState({ userName, review });
-  }
   render() {
     library.add(faThumbsUp);
-    const { userName, reviewNumber, review } = this.state;
+    const { userName, reviewNumber } = this.state;
+    const { review } = this.props;
     return (
       <div className="reviewSliderCards">
         <div className="reviewCardsWrapper">
