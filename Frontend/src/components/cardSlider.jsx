@@ -6,8 +6,6 @@ class CardSlider extends Component {
   render() {
     const { cards } = this.props;
     if (cards.length === 0) return null;
-    console.log(cards);
-
     return (
       <div className="row row-cols-3 flex-column sliderCards">
         {cards.map((c) => {

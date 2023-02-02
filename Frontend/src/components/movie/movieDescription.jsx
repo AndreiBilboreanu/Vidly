@@ -57,7 +57,8 @@ class MovieDescription extends Component {
                 <p>Rate this!</p>
                 <h3>{movieDescription.title}</h3>
                 <StarRataing
-                  key={movieDescription._id}
+                  key={movieDescription._id.slice(-3)}
+                  ratingKey={movieDescription._id}
                   onRatingChange={this.handleRatingChange}
                 />
               </div>

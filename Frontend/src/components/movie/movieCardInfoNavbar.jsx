@@ -34,7 +34,7 @@ class MovieCardInfoNavbar extends Component {
               className="buttonCard"
               id="profile-tab"
               data-bs-toggle="tab"
-              data-bs-target={`#${movie._id.slice(-3)}`}
+              data-bs-target={`#${movie._id.slice(-5)}`}
               type="button"
               role="tab"
               aria-controls="profile"
@@ -66,23 +66,29 @@ class MovieCardInfoNavbar extends Component {
             role="tabpanel"
             aria-labelledby="messages-tab"
           >
-            <MovieDescription movieDescription={movie}/>
+            <MovieDescription movieDescription={movie} />
           </div>
           <div
             className="tab-pane contentMain"
-            id={movie._id.slice(-3)}
+            id={movie._id.slice(-5)}
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            <MovieDistribution key={movie._id} movieDistribution={movie.distribution} />
+            <MovieDistribution
+              key={movie._id}
+              movieId={movie._id}
+              movieDistribution={movie.distribution}
+            />
           </div>
           <div
-            className="tab-pane content"
+            className="tab-pane contentMain"
             id={movie._id.slice(-2)}
             role="tabpanel"
             aria-labelledby="review-tab"
           >
-            <MovieReview key={movie._id} movie={movie} />
+            {movie.title === "Airplane" && (
+              <MovieReview key={movie._id} movie={movie} />
+            )}
           </div>
         </div>
       </div>

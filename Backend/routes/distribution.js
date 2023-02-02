@@ -10,11 +10,29 @@ router.get("/", async (req, res) => {
   res.send(distribution);
 });
 
+//Create a distribution
+router.post("/", async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+  console.log("nasrfasfas");
+  const distribution = new Distribution({
+    name: req.body.name,
+    profileImage: req.body.profileImage,
+    role: req.body.role,
+  });
+
+  try {
+    await distribution.save();
+    res.send(distribution);
+  } catch (ex) {
+    for (let field in ex.errors) console.log(ex.errors[field].message);
+  }
+});
+module.exports = router;
+
 //Get an array of distribution by id
 router.post("/distributions", async (req, res) => {
-
   const distribution = await Distribution.find({ _id: { $in: req.body._id } });
-  console.log(distribution);
   if (!distribution)
     return res
       .status(404)
@@ -33,23 +51,3 @@ router.get("/:id", async (req, res) => {
 
   res.send(distribution);
 });
-
-//Create a distribution
-// router.post("/", async (req, res) => {
-//   const { error } = validate(req.body);
-//   if (error) return res.status(400).send(error.details[0].message);
-
-//   const distribution = new Distribution({
-//     name: req.body.name,
-//     profileImage: req.body.profileImage,
-//     role: req.body.role,
-//   });
-
-//   try {
-//     await distribution.save();
-//     res.send(distribution);
-//   } catch (ex) {
-//     for (let field in ex.errors) console.log(ex.errors[field].message);
-//   }
-// });
-module.exports = router;

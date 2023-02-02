@@ -58,7 +58,7 @@ class NavBar extends Component {
               </NavLink>
             </div>
             <div className="navbar-nav">
-              {user && <span class="navbar-text">Welcome,</span>}
+              {user && <span className="navbar-text">Welcome,</span>}
               {!user && (
                 <>
                   <NavLink className="nav-item nav-link" to="/login">

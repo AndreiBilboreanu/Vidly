@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import CardSlider from "../cardSlider";
 import { getDistributionByIds } from "../../services/distributionService";
 import "../../css/distributionCards.css";
@@ -18,57 +19,64 @@ class MovieDistribution extends Component {
   }
   render() {
     const { distribution } = this.state;
-    console.log(distribution);
+    const { movieId } = this.props;
     const slides = Array.from(
       { length: Math.ceil(distribution.length / 3) - 1 },
       (_, i) => i + 1
     );
+    console.log(movieId);
     return (
-      <div
-        id="carouselCards"
-        className="carousel carousel-dark slide"
-        data-ride="carousel"
-      >
-        <div className="carousel-inner">
-          <div className="carousel-item active" key={0}>
-            <CardSlider cards={distribution.slice(0, 3)} />
+      <div>
+        <div
+          id={`carousel-${movieId}`}
+          className="carousel carousel-dark slide"
+          data-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active" key={0}>
+              <CardSlider cards={distribution.slice(0, 3)} />
+            </div>
+            {slides.map((slide) => {
+              return (
+                <div className="carousel-item" key={slide}>
+                  <CardSlider
+                    cards={distribution.slice(slide * 3, slide * 3 + 3)}
+                  />
+                </div>
+              );
+            })}
           </div>
-          {slides.map((slide) => {
-            return (
-              <div className="carousel-item" key={slide}>
-                {console.log(distribution.slice(slide * 2 - 1, 3), "up")}
-                <CardSlider
-                  cards={distribution.slice(slide * 3, slide * 3 + 3)}
-                />
-              </div>
-            );
-          })}
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target={`#carousel-${movieId}`}
+            data-bs-slide="prev"
+          >
+            <span
+              id={`carousel-${movieId}`}
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span id={movieId} className="visually-hidden">
+              Previous
+            </span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target={`#carousel-${movieId}`}
+            data-bs-slide="next"
+          >
+            <span
+              id={movieId}
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span id={movieId} className="visually-hidden">
+              Next
+            </span>
+          </button>
         </div>
-
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselCards"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselCards"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
       </div>
     );
   }

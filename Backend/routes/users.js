@@ -12,6 +12,15 @@ router.get("/me", auth, async (req, res) => {
   res.send(user);
 });
 
+// Get a user name by id
+router.get("/:id", async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (!user)
+    return res.status(404).send("The movie with the given ID was not found.");
+
+  res.send(user.name);
+});
+
 // Creating a new User
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);

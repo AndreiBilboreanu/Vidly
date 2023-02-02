@@ -13,6 +13,17 @@ router.get("/", async (req, res) => {
   res.send(reviews);
 });
 
+//Get all reviews of a movie
+router.get("/:id", async (req, res) => {
+
+    const reviews = await Review.find({movieId:req.params.id})
+    if (!reviews)
+      return res.status(404).send("The movie has nop reviews.");
+  
+    res.send(reviews);
+  });
+  
+
 //Create a review
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);

@@ -4,12 +4,12 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import "../../css/starRating.css";
 
-const StarRataing = ({ onRatingChange }) => {
+const StarRataing = ({ onRatingChange, ratingKey }) => {
   const [rating, setRating] = useState(null);
   const [hovered, setHovered] = useState(null);
   library.add(faStar);
   return (
-    <div>
+    <div id={ratingKey.slice(-6)}>
       {[...Array(10)].map((star, i) => {
         const ratingValue = i + 1;
         return (
