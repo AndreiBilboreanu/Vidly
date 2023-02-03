@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import MoviesTable from "./moviesTable";
-import ListGroup from "../common/listGroup";
+// import MoviesTable from "./moviesTable";
+// import ListGroup from "../common/listGroup";
+import Select from "../common/select";
 import Pagination from "../common/pagination";
 import SearchBox from "../searchBox";
+import MoviesDisplay from "./moviesDisplay";
 import { getMovies, deleteMovie } from "../../services/movieService";
 import { getGenres } from "../../services/genreService";
 import { paginate } from "../../utils/paginate";
 import _ from "lodash";
-import MoviesDisplay from "./moviesDisplay";
-
+import "../../css/movie.css";
 class Movies extends Component {
   state = {
     movies: [],
@@ -57,8 +58,22 @@ class Movies extends Component {
     this.setState({ currentPage: page });
   };
 
+  // handleGenreSelect = (genre) => {
+  //   console.log(genre, "genre");
+  //   this.setState({
+  //     selectedGenre: genre,
+  //     searchQuery: "",
+  //     currentPage: 1,
+  //   });
+  // };
   handleGenreSelect = (genre) => {
-    this.setState({ selectedGenre: genre, searchQuery: "", currentPage: 1 });
+    const genres = this.state.genres;
+    const genreSelected = genres.filter((g) => g.name === genre);
+    this.setState({
+      selectedGenre: genreSelected[0],
+      searchQuery: "",
+      currentPage: 1,
+    });
   };
 
   handleSort = (sortColumn) => {
@@ -103,13 +118,7 @@ class Movies extends Component {
     const { totalCount, data: movies } = this.getPagedData();
     return (
       <div className="row">
-        <div className="col-3">
-          <ListGroup
-            items={this.state.genres}
-            selectedItem={this.state.selectedGenre}
-            onItemSelect={this.handleGenreSelect}
-          />
-        </div>
+        <div className="col-3 mainCardHolder"></div>
         <div className="col">
           {user && (
             <Link
@@ -120,8 +129,19 @@ class Movies extends Component {
               New Movie
             </Link>
           )}
-          <p>Showing {totalCount} movies in the database.</p>
-          <SearchBox value={searchQuery} onChange={this.handleSearch} />
+          <div className="row g= align-items-center searchBar">
+            <div className="col-md-9">
+              <SearchBox value={searchQuery} onChange={this.handleSearch} />
+            </div>
+            <div className="col-md-2">
+              <Select
+                items={this.state.genres}
+                selectedItem={this.state.selectedGenre}
+                onItemSelect={this.handleGenreSelect}
+              />
+            </div>
+          </div>
+
           <MoviesDisplay movies={movies} />
           {/* <MoviesTable
             movies={movies}
