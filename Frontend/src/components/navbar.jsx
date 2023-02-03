@@ -54,7 +54,7 @@ class NavBar extends Component {
                 Watchlist
               </NavLink>
               <NavLink className="nav-item nav-link" to="/rentals">
-                Rentals
+                Top
               </NavLink>
             </div>
             <div className="navbar-nav">

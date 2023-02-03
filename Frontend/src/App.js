@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/common/protectedRoute";
 import auth from "./services/authService";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import Footer from "./components/footer";
 
 class App extends Component {
   state = {};
@@ -47,9 +48,7 @@ class App extends Component {
               <ProtectedRoute path="/movies/:_id" component={MovieForm} />
               <Route
                 path="/movies"
-                render={(props) => (
-                  <Movies {...props} user={user}/>
-                )}
+                render={(props) => <Movies {...props} user={user} />}
               />
               <Route path="/customers" component={Customers} />
               <Route path="/rentals" component={Rentals} />
@@ -59,6 +58,7 @@ class App extends Component {
             </Switch>
           </div>
         </main>
+        <Footer />
       </>
     );
   }

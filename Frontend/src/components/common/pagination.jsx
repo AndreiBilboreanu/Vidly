@@ -20,7 +20,14 @@ class Pagination extends Component {
                 pageNumber === currentPage ? "page-item active" : "page-item"
               }
             >
-              <a className="page-link" onClick={() => onPageChange(pageNumber)}>
+              <a
+                className={
+                  pageNumber === currentPage
+                    ? "page-link link-light border-secondary"
+                    : "page-link link-secondary border-secondary"
+                }
+                onClick={() => onPageChange(pageNumber)}
+              >
                 {pageNumber}
               </a>
             </li>
