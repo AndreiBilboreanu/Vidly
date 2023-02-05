@@ -28,7 +28,6 @@ router.post("/", async (req, res) => {
     for (let field in ex.errors) console.log(ex.errors[field].message);
   }
 });
-module.exports = router;
 
 //Get an array of distribution by id
 router.post("/distributions", async (req, res) => {
@@ -51,3 +50,5 @@ router.get("/:id", async (req, res) => {
 
   res.send(distribution);
 });
+
+module.exports = router;

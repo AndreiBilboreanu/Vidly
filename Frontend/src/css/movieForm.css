@@ -1,0 +1,56 @@
+.movieFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.movieFormContainer h1 {
+  color: aliceblue !important;
+}
+
+.movieForm {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  gap: 2rem;
+}
+
+.movieFormContainer input[type="text"],
+textarea {
+  background-color: none !important;
+  color: black !important;
+}
+
+.movieFormContainer label {
+  background-color: none !important;
+}
+
+.movieFormContainer select {
+  /* background-color: aliceblue; */
+  backdrop-filter: blur(5px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.movieFormContainer textarea {
+  background-color: aliceblue !important;
+  backdrop-filter: blur(5px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.movieFormContainer input[type="file"] {
+  color: aliceblue;
+}
+
+.movieFormContainer label {
+  color: aliceblue;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.movieForm > .formButton {
+  margin-left: 150px !important;
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
 import CustomInput from "./customInput";
+import Textarea from "./textarea";
 class Form extends Component {
   state = {
     data: {},
@@ -53,7 +54,6 @@ class Form extends Component {
   };
 
   handleImageChange = ({ currentTarget: input }) => {
-    console.log("mama");
     console.log(input.target.files[0]);
     const data = { ...this.state.data };
     data[input.name] = input.target.files[0];
@@ -94,6 +94,19 @@ class Form extends Component {
         label={label}
         onChange={this.handleImageChange}
         accept=".png, .jpg, .jpeg"
+        error={errors[name]}
+      />
+    );
+  }
+
+  renderTextArea(name, label) {
+    const { data, errors } = this.state;
+    return (
+      <Textarea
+        name={name}
+        value={data[name]}
+        label={label}
+        onChange={this.handleChange}
         error={errors[name]}
       />
     );

@@ -63,7 +63,7 @@ function validateMovie(movie) {
     image: Joi.required(),
     rate: Joi.number().min(1).max(10).required(),
     description: Joi.string().min(100).max(5000).required(),
-    distribution: Joi.array().items(Joi.objectId()).required(),
+    distribution: Joi.array().items(Joi.objectId()),
   });
   return schema.validate(movie);
 }

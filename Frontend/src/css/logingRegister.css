@@ -1,4 +1,4 @@
-input[type="text"],
+.pageContainer input[type="text"],
 textarea {
   background-color: rgb(40, 139, 136, 0.15);
   backdrop-filter: blur(5px);
@@ -7,19 +7,19 @@ textarea {
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-input[type="password"],
+.pageContainer input[type="password"],
 textarea {
-  background-color: rgb(40, 139, 136, 0.15);
+  background-color: rgb(40, 139, 136, 0.15) !important;
   backdrop-filter: blur(5px);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-label {
+.pageContainer label {
   margin-top: 25px !important;
   font-weight: 900;
   font-size: 1.2rem;
-  color: rgb(1, 30, 74);
+  color: rgb(1, 30, 74) !important;
 }
 
 h1 {
@@ -39,7 +39,7 @@ h3 {
   border-radius: 50px !important;
   border-radius: 50px;
   width: 260px;
-  margin-left: 30px;
+  margin-left: 55px;
   margin-top: 36px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -87,4 +87,14 @@ h3 {
 .socialMediaIcons {
   color: rgb(1, 30, 74);
   font-size: 1.6rem;
+}
+
+.form-validation {
+  position: absolute !important;
+  /* display: block; */
+  width: 113%;
+  height: 10%;
+  color: #f73d52 !important;
+  margin-top: -13px;
+  font-weight: bold;
 }

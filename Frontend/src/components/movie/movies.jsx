@@ -120,7 +120,7 @@ class Movies extends Component {
       <div className="row">
         <div className="col-3 mainCardHolder"></div>
         <div className="col">
-          {user && (
+          {user && "isAdmin" in user && (
             <Link
               to="/movies/new"
               className="btn btn-primary"

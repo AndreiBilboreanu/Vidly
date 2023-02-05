@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import MovieReview from "./movieReview";
 import MovieDistribution from "./movieDistribution";
 import MovieDescription from "./movieDescription";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faFilePen, faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
 
 const MovieCardInfoNavbar = ({ movie }) => {
+  library.add(faFilePen, faUserAstronaut);
   return (
     <div
       id={`movie-navbar-${movie._id}`}

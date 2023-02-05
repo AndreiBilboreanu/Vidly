@@ -10,8 +10,6 @@
   min-height: 100%;
 }
 
-
-
 .cardContent {
   width: 68%;
   display: contents;
@@ -41,11 +39,12 @@
 .buttonNav {
   height: 100%;
   width: 21%;
+  border: none !important;
 }
 .liContent {
   height: calc(100% / 3);
   font-weight: bold;
-  color: aliceblue !important;
+  color: aliceblue;
 }
 
 .contentMain {
@@ -73,8 +72,8 @@
   background-color: rgb(49, 49, 49);
   transition: 0.3s ease-out;
   border: none;
-  border-top-right-radius: 10px 80px;
-  border-bottom-right-radius: 10px 80px;
+  /* border-top-right-radius: 10px 80px;
+  border-bottom-right-radius: 10px 80px; */
   border-left: 1mm solid rgb(31, 31, 31);
 }
 

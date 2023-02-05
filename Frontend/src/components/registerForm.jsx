@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Form from "./common/form";
 import Joi from "joi-browser";
 import SocialMedia from "./socialMedia";
@@ -27,7 +28,10 @@ class RegisterForm extends Form {
     try {
       const response = await userService.register(this.state.data);
       auth.loginWithJwt(response.header["x-auth-token"]);
-      window.location = "/";
+      const { state } = this.props.location;
+      console.log("mata")
+      window.location = state ? state.from.pathname : "/";
+      console.log("mata");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -39,6 +43,7 @@ class RegisterForm extends Form {
   };
 
   render() {
+    if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
       <div className="pageContainer">
         <div className="loginContainer">
