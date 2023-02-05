@@ -1,6 +1,7 @@
 # Vidly
 
-A website containing information and statistics about movies as well as actors, directors and other film industry professionals.
+**A website containing information and statistics about movies as well as actors, directors and other film industry professionals.**
+
 - Allows users to search, browse, review and to have a watchlist of movies
 - It is a web application made using MERN
 - Using JWT for authentication
