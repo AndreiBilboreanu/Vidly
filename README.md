@@ -1,4 +1,4 @@
-#Vidly
+# Vidly
 • Allows users to search, browse, review and to have a watchlist of movies
 • It is a web application made with React and Node.js
 • It uses MongoDB as a database
