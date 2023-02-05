@@ -7,3 +7,5 @@
 - Frontend libraries and frameworks: bootstrap, joi-browser, lodas
 
 ## Login/Register
+
+![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/login-register.gif)
