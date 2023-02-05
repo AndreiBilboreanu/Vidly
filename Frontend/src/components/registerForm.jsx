@@ -27,11 +27,10 @@ class RegisterForm extends Form {
   doSubmit = async () => {
     try {
       const response = await userService.register(this.state.data);
-      auth.loginWithJwt(response.header["x-auth-token"]);
-      const { state } = this.props.location;
-      console.log("mata")
-      window.location = state ? state.from.pathname : "/";
-      console.log("mata");
+      const data = await response.json();
+      auth.loginWithJwt(data["x-auth-token"]);
+      window.location = "/";
+      console.log("mama")
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
