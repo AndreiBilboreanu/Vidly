@@ -14,11 +14,11 @@
 
 ## Movie Cards
 
-![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/MovieCards.gif)
+![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/Movie%20Cards.gif)
 
 ## Sorting and Searching
 
-![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/SortingandSearching.gif)
+![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/Sorting%20and%20Searching.gif)
 
 ## Admin
 
