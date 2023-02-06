@@ -11,3 +11,15 @@
 ## Login/Register
 
 ![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/login-register.gif)
+
+## Movie Cards
+
+![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/MovieCards.gif)
+
+## Sorting and Searching
+
+![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/SortingandSearching.gif)
+
+## Admin
+
+![](https://github.com/AndreiBilboreanu/Vidly/blob/main/demo/Admin.gif)
