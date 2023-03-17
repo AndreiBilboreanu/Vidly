@@ -2,6 +2,7 @@ const auth = require("../middleware/auth");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const { User, validate } = require("../models/user");
+const { WatchList } = require("../models/watchlist");
 const mongoose = require("mongoose");
 const express = require("express");
 const { constant } = require("lodash");
@@ -29,10 +30,19 @@ router.post("/", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("This user is already registerd.");
 
+  //create user
   user = new User(_.pick(req.body, ["name", "email", "password"]));
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
+  console.log(user._id.toHexString());
+  //create a watchlist for the user
+  let watchlist = new WatchList({
+    userId: user._id.toHexString(),
+    movieList: [],
+  });
+
+  await watchlist.save();
 
   const token = user.generateAuthToken();
   res

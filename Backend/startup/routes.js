@@ -7,6 +7,7 @@ const users = require("../routes/users");
 const auth = require("../routes/auth");
 const distribution = require("../routes/distribution");
 const review = require("../routes/reviews");
+const watchlist = require("../routes/watchlist");
 const error = require("../middleware/error");
 
 module.exports = function (app) {
@@ -19,5 +20,6 @@ module.exports = function (app) {
   app.use("/app/auth", auth);
   app.use("/app/distribution", distribution);
   app.use("/app/reviews", review);
+  app.use("/app/watchlist", watchlist);
   app.use(error);
 };
