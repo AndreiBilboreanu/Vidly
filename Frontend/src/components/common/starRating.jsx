@@ -8,13 +8,13 @@ const StarRataing = ({ onRatingChange, ratingKey }) => {
   const [rating, setRating] = useState(null);
   const [hovered, setHovered] = useState(null);
   library.add(faStar);
-
+  console.log(ratingKey);
   return (
-    <div id={`star-rating-${ratingKey}`}>
+    <div key={`star-rating-${ratingKey}`}>
       {[...Array(10)].map((star, i) => {
         const ratingValue = i + 1;
         return (
-          <label>
+          <label key={`star-rating-label-${i}`}>
             <input
               type="radio"
               name="rating"

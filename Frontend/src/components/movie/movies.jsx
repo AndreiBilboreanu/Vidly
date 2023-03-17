@@ -142,7 +142,7 @@ class Movies extends Component {
             </div>
           </div>
 
-          <MoviesDisplay movies={movies} />
+          <MoviesDisplay movies={movies} user={user}/>
           {/* <MoviesTable
             movies={movies}
             sortColumn={sortColumn}

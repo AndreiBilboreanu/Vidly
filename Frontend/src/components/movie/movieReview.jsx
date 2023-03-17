@@ -12,9 +12,8 @@ const MovieReview = ({ movie }) => {
       setReviews(result.data);
     }
     fetchData();
-  }, []);
+  });
 
-  console.log(reviews, "reviews");
   if (reviews && reviews.length !== 0)
     return (
       <div
@@ -60,7 +59,7 @@ const MovieReview = ({ movie }) => {
         </button>
       </div>
     );
-    else return null
+  else return null;
 };
 
 export default MovieReview;

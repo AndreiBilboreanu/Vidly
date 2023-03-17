@@ -28,7 +28,7 @@ class MovieDescription extends Component {
     library.add(faStar, regularStar);
     const { movieDescription } = this.props;
     return (
-      <div className="movieDescription">
+      <div  className="movieDescription">
         <h5 className="movieTitle">{movieDescription.title}</h5>
         <p className="descriptionParagraph">
           &emsp; "{movieDescription.description}"

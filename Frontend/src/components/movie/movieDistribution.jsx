@@ -25,7 +25,6 @@ class MovieDistribution extends Component {
       { length: Math.ceil(distribution.length / 3) - 1 },
       (_, i) => i + 1
     );
-    console.log(movieId);
     return (
       <div>
         <div
