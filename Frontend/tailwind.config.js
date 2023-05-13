@@ -25,6 +25,33 @@ module.exports = {
         "3xl": "60px",
         "4xl": "70px",
       },
+      colors: {
+        black: {
+          DEFAULT: "#000000",
+          light: "#141414",
+          lighter: "#242424",
+        },
+        white: {
+          DEFAULT: "#FFFFFF",
+        },
+        grey: {
+          darker: "#595959",
+          dark: "#B3B3B3",
+          DEFAULT: "#F5F5F5",
+          light: "#C7C7C7",
+          lighter: "#E5E5E5",
+          transparent: "#6D6D6E66",
+        },
+        blue: {
+          DEFAULT: "#54B9C5",
+        },
+        red: {
+          DEFAULT: "#E30E16",
+        },
+        green: {
+          DEFAULT: "#46D369",
+        },
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
