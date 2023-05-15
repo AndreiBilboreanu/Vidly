@@ -1,0 +1,74 @@
+import { Meta, Source } from "@storybook/addon-docs";
+
+<Meta title="Tokens/4. Spacing" />
+
+<h1>Spacing</h1>
+<table className="w-full">
+    <tr >
+    <th >Name</th>
+    <th>Value</th>
+    <th>Preview</th>
+    </tr>
+    <tr>
+        <th>xxs</th>
+        <th>5px</th>
+        <th><div className="bg-red-400 w-xxs h-8 "></div></th>
+    </tr>
+    <tr>
+        <th>xs</th>
+        <th>10px</th>
+        <th><div className="bg-red-400 w-xs h-8 "></div></th>
+    </tr>
+    <tr>
+        <th>sm</th>
+        <th>16px</th>
+        <th><div className="bg-red-400 w-sm h-8 "></div></th>
+    </tr>
+    <tr>
+        <th>md</th>
+        <th>20px</th>
+        <th><div className="bg-red-400 w-md h-8 "></div></th>
+    </tr>
+    <tr>
+        <th>lg</th>
+        <th>24px</th>
+        <th><div className="bg-red-400 w-lg h-8 "></div></th>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <th>30px</th>
+        <th><div className="bg-red-400 w-xl h-8 "></div></th>
+    </tr>
+    <tr>
+        <th>2xl</th>
+        <th>40px</th>
+        <th><div className="bg-red-400 w-2xl h-8 "></div></th>
+    </tr>
+    <tr>
+        <th>3xl</th>
+        <th>60px</th>
+        <th><div className="bg-red-400 w-3xl h-8 "></div></th>
+    </tr>
+    <tr>
+        <th>4xl</th>
+        <th>70px</th>
+        <th><div className="bg-red-400 w-4xl h-8"></div></th>
+    </tr>
+
+</table>
+
+The breakpoints are customizable via Tailwind — you can find them in a root directory \tailwind.config.js .
+
+<Source code={`      spacing: {
+        xxs: "5px",
+        xs: "10px",
+        sm: "16px",
+        md: "20px",
+        lg: "24px",
+        xl: "30px",
+        "2xl": "40px",
+        "3xl": "60px",
+        "4xl": "70px",
+      },`}>
+
+</Source>

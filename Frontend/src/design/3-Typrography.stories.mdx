@@ -1,0 +1,44 @@
+import { Meta, Typeset } from "@storybook/blocks";
+
+<Meta title="Tokens/3. Typography" />
+
+export const typography = {
+  type: {
+    primary: '"Mark Pro, Mark Pro Fallback", sans-serif',
+  },
+  weight: {
+    medium: "500",
+    semibold: "600",
+    bold: "700",
+    black: "900",
+  },
+  size: {
+    xxs: 10,
+    xs: 12,
+    sm: 14,
+    xls: 22,
+    xxl: 32,
+  },
+};
+
+export const SampleText =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+# Typography
+
+**Font:** Mark Pro
+
+**Weights:** 500(medium), 600(semibold),700(bold), 900(black)
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.xxs),
+    Number(typography.size.xs),
+    Number(typography.size.sm),
+    Number(typography.size.xls),
+    Number(typography.size.xxl),
+  ]}
+  fontWeight={typography.weight.medium}
+  sampleText={SampleText}
+  fontFamily={typography.type.primary}
+/>

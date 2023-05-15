@@ -1,0 +1,49 @@
+import { Meta, Source } from "@storybook/addon-docs";
+
+<Meta title="Tokens/5. Breakpoints" />
+<h1>Breakpoints</h1>
+<table className="w-full">
+  <tr>
+    <th>Breakpoints</th>
+    <th>Class-prefix</th>
+    <th>View-port range</th>
+  </tr>
+    <tr>
+    <td>Small</td>
+    <td>sm</td>
+    <td>480px</td>
+  </tr>
+  <tr>
+    <td>Medium</td>
+    <td>md</td>
+    <td>768px</td>
+  </tr>
+  <tr>
+    <td>Large</td>
+    <td>lg</td>
+    <td>1024px</td>
+  </tr>
+  <tr>
+    <td>Extra Large</td>
+    <td>xl</td>
+    <td>1280px</td>
+  </tr>
+
+  <tr>
+    <td>Double Extra Large</td>
+    <td>2xl</td>
+    <td>1440px</td>
+  </tr>
+</table>
+
+The breakpoints are customizable via Tailwind — you can find them in a root directory \tailwind.config.js .
+
+<Source code={`screens: {
+      sm: "480px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1440px",
+    },`}>
+
+</Source>
