@@ -1,14 +1,24 @@
-import { Logo } from "../Logo/Logo";
-
+import { Logo } from "../Elements/Logo/Logo";
+import Link from "next/link";
 export const Navbar = () => {
   return (
     <nav className="px-3xl h-4xl flex items-center">
-      <Logo />
+      <Link href="/">
+        <Logo />
+      </Link>
       <div className="flex ">
-        <p>Pagina principală</p>
-        <p> Seriale</p>
-        <p>Filme</p>
-        <p>Lista mea</p>
+        <Link href="/">
+          <p>Pagina principală</p>
+        </Link>
+        <Link href="/">
+          <p> Seriale</p>
+        </Link>
+        <Link href="/">
+          <p>Filme</p>
+        </Link>
+        <Link href="/">
+          <p>Lista mea</p>
+        </Link>
       </div>
     </nav>
   );
