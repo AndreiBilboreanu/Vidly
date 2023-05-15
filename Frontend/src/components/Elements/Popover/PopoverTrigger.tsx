@@ -15,7 +15,7 @@ export const PopoverTrigger = React.forwardRef<void, PopoverTriggerProps>(
         className={clsx(
           `w-[${width}]`,
           `h-[${height}]`,
-          "bg-white shadow-md flex flex-col",
+          "cursor-pointer",
           className
         )}
       >
