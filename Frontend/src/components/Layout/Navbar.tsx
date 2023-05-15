@@ -1,4 +1,4 @@
-import { Logo } from "../Logo/Logo";
+import { Logo } from "../Elements/Logo/Logo";
 import Link from "next/link";
 export const Navbar = () => {
   return (
