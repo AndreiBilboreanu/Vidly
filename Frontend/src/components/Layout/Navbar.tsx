@@ -5,7 +5,7 @@ import { NavigationLinks } from "../Elements/NavigationLinks/NavigationLinks";
 
 export const Navbar = () => {
   return (
-    <nav className="px-3xl h-4xl flex items-center text-white">
+    <nav className="px-3xl h-4xl flex items-center text-white select-none">
       <Link href="/" className="mr-lg">
         <Logo />
       </Link>
