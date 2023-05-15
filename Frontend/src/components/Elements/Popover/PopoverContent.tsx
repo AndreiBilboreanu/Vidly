@@ -15,7 +15,7 @@ export const PopoverContent = React.forwardRef<void, PopoverContentProps>(
         className={clsx(
           `w-[${width}]`,
           `h-[${height}]`,
-          "bg-white shadow-md flex flex-col",
+          "shadow-md flex flex-col rounded-sm focus:outline-none",
           className
         )}
       >
